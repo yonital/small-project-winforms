@@ -1,0 +1,11 @@
+first name:yotam
+last name:bloch
+email:kishkashta@gmail.com
+number0546606111
+gender:Male
+carry:carrying
+annoying:annoying
+crazy:crazy
+dateLocation:Sea
+food:KFC
+theday:Thursday
