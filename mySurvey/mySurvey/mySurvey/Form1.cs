@@ -32,8 +32,18 @@ namespace mySurvey
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            string path = @"C:\Users\yoni\source\repos\mySurvey\mySurvey\submitted\myFile_" + DateTime.Now.ToString("ddMMyyhhmmss") + ".txt";
-            using (FileStream fs = new FileStream(path, FileMode.CreateNew))
+            string path = @"c:\Test\";
+            string pathWithFileExtention = "";
+            if (Directory.Exists(path))
+            {
+                 pathWithFileExtention = path + DateTime.Now.ToString("ddMMyyhhmmss") + ".txt";
+            }
+            else
+            {
+                DirectoryInfo di = Directory.CreateDirectory(path);
+                pathWithFileExtention = path + DateTime.Now.ToString("ddMMyyhhmmss") + ".txt";
+            }
+            using (FileStream fs = new FileStream(pathWithFileExtention, FileMode.CreateNew))
             {
                 RadioButton rb = null;
                 using (TextWriter tw = new StreamWriter(fs))
@@ -132,7 +142,7 @@ namespace mySurvey
 
         private void ComboFood_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filepath = @"C:\test\" + ComboFood.SelectedItem.ToString().Trim() + ".jpg";
+            string filepath = @"C:\Test\" + ComboFood.SelectedItem.ToString().Trim() + ".jpg";
             if (File.Exists(filepath))
             {
                 foodPicBox.ImageLocation = filepath;
